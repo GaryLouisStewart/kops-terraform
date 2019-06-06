@@ -2,3 +2,7 @@
 mykey
 mykey.pub
 *.pub
+*.svg
+*.yml
+*.yaml
+*.DS_Store
