@@ -28,7 +28,7 @@ resource "aws_security_group" "eks-dev-cluster" {
 ##############################################
 
 resource "aws_security_group_rule" "eks-dev-cluster-ingress-workstation-https-secure" {
-  count             = "${var.cidr_block_ingress_workstation_secure != "" ? 1 : 0}"
+  count             = "${var.cidr_block_ingress_workstation_secure ? 1 : 0}"
   cidr_blocks       = ["${var.cidr_ingress_workstation}"]
   description       = "Allow workstation to communicate with the cluster API Server"
   from_port         = 443
@@ -43,7 +43,7 @@ resource "aws_security_group_rule" "eks-dev-cluster-ingress-workstation-https-se
 #################################################
 
 resource "aws_security_group_rule" "eks-dev-cluster-ingress-workstation-https-insecure" {
-  count             = "${var.cidr_block_ingress_workstation_insecure != "" ? 1 : 0}"
+  count             = "${var.cidr_block_ingress_workstation_insecure ? 1 : 0}"
   cidr_blocks       = ["${chomp(data.http.myipaddr.body)}/32"]
   description       = "Allow workstation to communicate with the cluster API Server"
   from_port         = 443

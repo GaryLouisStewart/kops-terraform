@@ -15,15 +15,15 @@ variable "provider" {
 }
 
 variable "cidr_block_ingress_workstation_secure" {
-  description = "If variable is set, this variable will allow an insecure rule to be manually defined using the 'cidr_ingress_workstation' variable"
+  description = "If variable is set true, this variable will allow an insecure rule to be manually defined using the 'cidr_ingress_workstation' variable"
   type = "string"
-  default = ""
+  default = false
 }
 
 variable "cidr_block_ingress_workstation_insecure" {
   description = "If set to true will create a secure rule to allow https traffic to kuberenetes master from IP specified, this will default to your public ip"
   type = "string"
-  default = "true"
+  default = true
 }
 
 variable "cidr_ingress_workstation" {
