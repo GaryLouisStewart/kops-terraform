@@ -13,6 +13,12 @@ function install_kubectl {
            exit
       fi
 
+# switch namespace dynamically by callling kubens <namespace-name>
+alias kubens='f(){ kubectl config set-context $(kubectl config current-context) --namespace="$@";  unset -f f; }; f'
+
+# check current namespace
+alias chkns='kubectl config view  | grep namespace:'
+
 # generate some new SSH KEYS for ssh-administration
 SSH_KEYS=~/.ssh/gsadmin_key
 USER="Gary Louis Stewart"
