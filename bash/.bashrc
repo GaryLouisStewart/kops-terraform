@@ -33,3 +33,6 @@ fi
 
 alias ..="cd .."
 alias fhere="find . -name"
+
+export GOPATH="$HOME/go"
+PATH="$GOPATH/bin:$PATH"
